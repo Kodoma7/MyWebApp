@@ -39,7 +39,5 @@ public class ValidateServlet extends HttpServlet {
             e.printStackTrace();
         }
         //из дао в реквевст -> jsp
-
-        //
     }
 }

@@ -9,9 +9,9 @@
       <div class="title">
         <p><span class="pink">L</span>ist of <span class="pink">S</span>tudents</p>
       </div>
+      <form method="post" action="/editContact">
       <table>
           <tr>
-              <th>id</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Address</th>
@@ -21,12 +21,12 @@
           </tr>
           <c:forEach var="contact" items="${listContacts}">
               <tr>
-                  <td><c:out value="${contact.id}"/></td>
                   <td><c:out value="${contact.fname}"/></td>
                   <td><c:out value="${contact.lname}"/></td>
                   <td><c:out value="${contact.address}"/></td>
                   <td><c:out value="${contact.phoneNumber}"/></td>
                   <td><c:out value="${contact.groupName}"/></td>
+                  <td><button type="submit" name="Edit" value="${contact.id}, ${contact.fname}, ${contact.lname}, ${contact.address}, ${contact.phoneNumber}, ${contact.groupName}">edit</button></td>
               </tr>
           </c:forEach>
       </table>
@@ -37,5 +37,6 @@
               <td><input type="submit" value="Delete" name="Delete"/></td>
           </tr>
       </table>
+      </form>
   </body>
 </html>

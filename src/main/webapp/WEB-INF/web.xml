@@ -19,6 +19,10 @@
         <servlet-name>ValidateServlet</servlet-name>
         <servlet-class>com.kodoma.servlets.ValidateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditContactServlet</servlet-name>
+        <servlet-class>com.kodoma.servlets.EditContactServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ValidateServlet</servlet-name>
         <url-pattern>/validate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditContactServlet</servlet-name>
+        <url-pattern>/editContact</url-pattern>
     </servlet-mapping>
 
 </web-app>
