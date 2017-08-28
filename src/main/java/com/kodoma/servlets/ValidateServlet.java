@@ -22,14 +22,15 @@ public class ValidateServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         ContactDAO dao = ContactDAO.getInstance();
-        String result;
+        int userID;
         PrintWriter pw = response.getWriter();
 
         try {
-            result = dao.validate(name, password);
+            userID = dao.validate(name, password);
             List<User> list = dao.showAllContacts();
-            //request.setAttribute("validateUser", result); // с помощью атрибутов передаются данные между сервлетами
+            //request.setAttribute("validateUser", userID); // с помощью атрибутов передаются данные между сервлетами
             request.setAttribute("listContacts", list);
+            request.setAttribute("userID", userID);
             request.getRequestDispatcher("/main.jsp").forward(request, response);
 
         } catch (WrongUserNameOrPassword | SQLException e) {

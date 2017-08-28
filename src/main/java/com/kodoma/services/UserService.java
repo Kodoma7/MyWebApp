@@ -4,6 +4,8 @@ import com.kodoma.dao.DAO;
 import com.kodoma.dao.FactoryDAO;
 import com.kodoma.datasource.User;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Observer;
 
 /**
@@ -29,8 +31,8 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public void validate(String userName, String userPassword) throws Exception {
-        contactDAO.validate(userName, userPassword);
+    public int validate(String userName, String userPassword) throws Exception {
+        return contactDAO.validate(userName, userPassword);
     }
 
     public void add(User user) throws Exception {
@@ -52,13 +54,13 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public void showContactByID(User user) throws Exception {
-        contactDAO.showContactByID(user);
+    public User showContactByID(User user) throws Exception {
+        return contactDAO.showContactByID(user);
     }
 
     @Override
-    public void showAllContacts() throws Exception {
-        contactDAO.showAllContacts();
+    public List<User> showAllContacts() throws Exception {
+        return contactDAO.showAllContacts();
     }
 
     @Override
@@ -82,7 +84,7 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public void editGroup(String name, String newName) throws Exception {
+    public void editGroup(String name, String newName) throws SQLException {
         contactDAO.editGroup(name, newName);
     }
 

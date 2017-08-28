@@ -18,6 +18,7 @@
               <th>Phone Number</th>
               <th>Group Name</th>
               <th>&nbsp;</th>
+              <th>&nbsp;</th>
           </tr>
           <c:forEach var="contact" items="${listContacts}">
               <tr>
@@ -26,7 +27,16 @@
                   <td><c:out value="${contact.address}"/></td>
                   <td><c:out value="${contact.phoneNumber}"/></td>
                   <td><c:out value="${contact.groupName}"/></td>
-                  <td><button type="submit" name="Edit" value="${contact.id}, ${contact.fname}, ${contact.lname}, ${contact.address}, ${contact.phoneNumber}, ${contact.groupName}">edit</button></td>
+                  <td>
+                  <p><select name="take">
+                      <option disabled>Выберите действие</option>
+                      <option value="Add"> Добавить контакт </option>
+                      <option value="Edit"> Редактировать контакт </option>
+                      <option value="Remove"> Удалить контакт </option>
+                      <option value="ShowContactByID"> Найти контакт по id </option>
+                  </select></p>
+                  </td>
+                  <td><button type="submit" name="Ok" value="${contact.id}">Ok</button></td>
               </tr>
           </c:forEach>
       </table>

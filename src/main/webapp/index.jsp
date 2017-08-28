@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-         <h2>Start page</h2>
+         <h2>Авторизация</h2>
          <form method="post" action="/validate">
              <table>
                  <tr>

@@ -13,12 +13,12 @@ import java.util.Observer;
  */
 public interface DAO<T> {
     void setObserver(Observer o);
-    String validate(String userName, String userPassword) throws Exception;
+    int validate(String userName, String userPassword) throws Exception;
     void add(T obj) throws Exception;
     void label(T obj) throws Exception;
     void editContact(T obj) throws Exception;
     void removeContact(T obj) throws Exception;
-    void showContactByID(T obj) throws Exception;
+    User showContactByID(T obj) throws Exception;
     List<T> showAllContacts() throws Exception;
     void showContactByName(T obj) throws Exception;
     void showContactsOfGroup(String groupName) throws Exception;

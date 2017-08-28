@@ -11,7 +11,27 @@ import java.util.List;
 public class Mapper {
     private List<User> list = new ArrayList<>();
 
-    public List<User> mapToUser(ResultSet resultSet) {
+    public User mapToUser(ResultSet resultSet) {
+        User user = null;
+        try {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String fname = resultSet.getString("first_name");
+                String lname = resultSet.getString("last_name");
+                String address = resultSet.getString("address");
+                int phoneNumber = resultSet.getInt("phone_number");
+                String groupName = resultSet.getString("group_name");
+
+                user = new User(id, fname, lname, address, phoneNumber, groupName);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public List<User> mapToUsers(ResultSet resultSet) {
         list.clear();
         User user;
         try {

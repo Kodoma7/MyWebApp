@@ -44,24 +44,24 @@ public class ContactDAO extends Observable implements DAO<User> {
     }
 
     @Override
-    public String validate(String userName, String userPassword) throws SQLException, WrongUserNameOrPassword {
+    public int validate(String userName, String userPassword) throws SQLException, WrongUserNameOrPassword {
         PreparedStatement preparedStatement;
         preparedStatement = connection.prepareStatement(VALIDATE);
         preparedStatement.setString(1, userName);
         preparedStatement.setString(2, userPassword);
 
         ResultSet result = preparedStatement.executeQuery();
-        String s = "";
+        //String s = "";
 
         while (result.next()) {
             int id = result.getInt(1);
             if (id > 0) {
                 userID = id;
-                s = "Пользователь " + userName + " подключен.";
+                //s = "Пользователь " + userName + " подключен.";
             }
             else throw new WrongUserNameOrPassword();
         }
-        return s;
+        return userID;
     }
 
     @Override
@@ -111,16 +111,16 @@ public class ContactDAO extends Observable implements DAO<User> {
         preparedStatement.executeQuery();
     }
 
-    public void showContactByID(User user) throws SQLException, IOException {
+    public User showContactByID(User user) throws SQLException, IOException {
         PreparedStatement preparedStatement;
         preparedStatement = connection.prepareStatement(SHOW_CONTACT_BY_ID);
         preparedStatement.setInt(1, user.getId());
         preparedStatement.setInt(2, userID);
 
         ResultSet result = preparedStatement.executeQuery();
-        List<User> users = mapper.mapToUser(result);
-        setChanged();
-        notifyObservers(users.toString());
+        User mapUser = mapper.mapToUser(result);
+
+        return mapUser;
     }
 
     @Override
@@ -130,7 +130,7 @@ public class ContactDAO extends Observable implements DAO<User> {
         preparedStatement.setInt(1, userID);
 
         ResultSet result = preparedStatement.executeQuery();
-        List<User> list = mapper.mapToUser(result);
+        List<User> list = mapper.mapToUsers(result);
         System.out.println(list);
 
         return list;
@@ -145,7 +145,7 @@ public class ContactDAO extends Observable implements DAO<User> {
 
         ResultSet result = preparedStatement.executeQuery();
 
-        //UsersList users = mapper.mapToUser(result);
+        //UsersList users = mapper.mapToUsers(result);
         setChanged();
         //notifyObservers(users.toString());
     }
@@ -159,7 +159,7 @@ public class ContactDAO extends Observable implements DAO<User> {
 
         ResultSet result = preparedStatement.executeQuery();
 
-        //UsersList users = mapper.mapToUser(result);
+        //UsersList users = mapper.mapToUsers(result);
         setChanged();
         //notifyObservers(users.toString());
     }
