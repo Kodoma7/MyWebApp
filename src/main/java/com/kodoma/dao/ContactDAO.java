@@ -23,7 +23,7 @@ import static com.kodoma.util.Procedures.*;
 public class ContactDAO extends Observable implements DAO<User> {
     private static Connection connection;
     private Mapper mapper = new Mapper();
-    private int userID;
+    private static int userID;
 
     public static ContactDAO instance;
 
@@ -165,16 +165,15 @@ public class ContactDAO extends Observable implements DAO<User> {
     }
 
     @Override
-    public void showAllGroupsNames() throws Exception {
+    public List<String> showAllGroupsNames() throws Exception {
         PreparedStatement preparedStatement;
         preparedStatement = connection.prepareStatement(SHOW_ALL_GROUPS_NAMES);
         preparedStatement.setInt(1, userID);
 
         ResultSet result = preparedStatement.executeQuery();
+        List<String> groupNames = mapper.mapToGroups(result);
 
-        String groupNames = mapper.mapToGroup(result);
-        setChanged();
-        notifyObservers(groupNames);
+        return groupNames;
     }
 
     @Override

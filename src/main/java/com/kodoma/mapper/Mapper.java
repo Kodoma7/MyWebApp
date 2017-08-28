@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mapper {
-    private List<User> list = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
+    private List<String> groups = new ArrayList<>();
 
     public User mapToUser(ResultSet resultSet) {
         User user = null;
@@ -32,7 +33,7 @@ public class Mapper {
     }
 
     public List<User> mapToUsers(ResultSet resultSet) {
-        list.clear();
+        users.clear();
         User user;
         try {
             while (resultSet.next()) {
@@ -44,13 +45,27 @@ public class Mapper {
                 String groupName = resultSet.getString("group_name");
 
                 user = new User(id, fname, lname, address, phoneNumber, groupName);
-                list.add(user);
+                users.add(user);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return list;
+        return users;
+    }
+
+    public List<String> mapToGroups(ResultSet resultSet) {
+        groups.clear();
+        try {
+            while (resultSet.next()) {
+                groups.add(resultSet.getString("group_name"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return groups;
     }
 
     public String mapToGroup(ResultSet resultSet) {

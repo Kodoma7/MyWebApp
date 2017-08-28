@@ -74,8 +74,8 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public void showAllGroupsNames() throws Exception {
-        contactDAO.showAllGroupsNames();
+    public List<String> showAllGroupsNames() throws Exception {
+        return contactDAO.showAllGroupsNames();
     }
 
     @Override

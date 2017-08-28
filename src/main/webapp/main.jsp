@@ -34,6 +34,7 @@
                       <option value="Edit"> Редактировать контакт </option>
                       <option value="Remove"> Удалить контакт </option>
                       <option value="ShowContactByID"> Найти контакт по id </option>
+                      <option value="ShowAllGroupsNames"> Найти контакт по id </option>
                   </select></p>
                   </td>
                   <td><button type="submit" name="Ok" value="${contact.id}">Ok</button></td>

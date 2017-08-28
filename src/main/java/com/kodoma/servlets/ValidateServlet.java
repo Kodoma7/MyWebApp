@@ -15,6 +15,7 @@ import java.util.List;
 
 
 public class ValidateServlet extends HttpServlet {
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
 
@@ -30,7 +31,7 @@ public class ValidateServlet extends HttpServlet {
             List<User> list = dao.showAllContacts();
             //request.setAttribute("validateUser", userID); // с помощью атрибутов передаются данные между сервлетами
             request.setAttribute("listContacts", list);
-            request.setAttribute("userID", userID);
+            //request.setAttribute("userID", userID);
             request.getRequestDispatcher("/main.jsp").forward(request, response);
 
         } catch (WrongUserNameOrPassword | SQLException e) {
