@@ -3,11 +3,11 @@
 
 <html>
   <head>
-    <title>Список студентов</title>
+    <title>Список контактов</title>
   </head>
   <body>
       <div class="title">
-        <p><span class="pink">L</span>ist of <span class="pink">S</span>tudents</p>
+        <p>Список контактов</p>
       </div>
       <form method="post" action="/editContact">
       <table>

@@ -18,6 +18,25 @@ public class EditContactServlet extends HttpServlet {
     private Service service = UserService.getInstance();
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("Ok"));
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String address = request.getParameter("address");
+        int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
+        String groupName = request.getParameter("groupName");
+
+        User user = new User(id, firstName, lastName, address, phoneNumber, groupName);
+
+        try {
+            service.editContact(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        request.getRequestDispatcher("/main.jsp").forward(request, response);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
 
@@ -31,8 +50,7 @@ public class EditContactServlet extends HttpServlet {
                 case "Edit": {
                     request.setAttribute("ID", id);
                     request.getRequestDispatcher("/dataInput.jsp").forward(request, response);
-
-                    //service.editContact(user);
+                    break;
                 }
                 case "ShowAllGroupsNames": {
                     List<String> groupNames = service.showAllGroupsNames();

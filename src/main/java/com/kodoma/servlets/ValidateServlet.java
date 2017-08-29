@@ -29,9 +29,7 @@ public class ValidateServlet extends HttpServlet {
         try {
             userID = dao.validate(name, password);
             List<User> list = dao.showAllContacts();
-            //request.setAttribute("validateUser", userID); // с помощью атрибутов передаются данные между сервлетами
             request.setAttribute("listContacts", list);
-            //request.setAttribute("userID", userID);
             request.getRequestDispatcher("/main.jsp").forward(request, response);
 
         } catch (WrongUserNameOrPassword | SQLException e) {
@@ -40,6 +38,5 @@ public class ValidateServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //из дао в реквевст -> jsp
     }
 }
