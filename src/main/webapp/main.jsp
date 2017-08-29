@@ -29,12 +29,8 @@
                   <td><c:out value="${contact.groupName}"/></td>
                   <td>
                   <p><select name="take">
-                      <option disabled>Выберите действие</option>
-                      <option value="Add"> Добавить контакт </option>
                       <option value="Edit"> Редактировать контакт </option>
                       <option value="Remove"> Удалить контакт </option>
-                      <option value="ShowContactByID"> Найти контакт по id </option>
-                      <option value="ShowAllGroupsNames"> Найти контакт по id </option>
                   </select></p>
                   </td>
                   <td><button type="submit" name="Ok" value="${contact.id}">Ok</button></td>
@@ -49,5 +45,54 @@
           </tr>
       </table>
       </form>
+
+      <form method="post" action="/showInformation">
+          <b>Найти контакт по ID</b>
+          <table>
+              <tr>
+                  <td>Введите id</td>
+                  <td><input type="text" name="ID"></td>
+              </tr>
+              <tr>
+                  <td><input type="submit" value="Найти"></td>
+              </tr>
+          </table>
+      </form>
+
+      <form method="post" action="/showInformation">
+          <b>Найти контакт по имени</b>
+          <table>
+              <tr>
+                  <td>Введите имя</td>
+                  <td><input type="text" name="Name"></td>
+              </tr>
+              <tr>
+                  <td><input type="submit" value="Найти" name="123"></td>
+              </tr>
+          </table>
+      </form>
+
+      <form method="post" action="/showInformation">
+          <b>Отобразить список всех групп</b>
+          <table>
+              <tr>
+                  <td><button type="submit" name="Show" value="Show">Показать</button></td>
+              </tr>
+          </table>
+      </form>
+
+      <form method="post" action="/showInformation">
+          <b>Найти контакты определенной группы</b>
+          <table>
+              <tr>
+                  <td>Введите название группы</td>
+                  <td><input type="text" name="NameOfGroup"></td>
+              </tr>
+              <tr>
+                  <td><input type="submit" value="Найти" name="ShowContactsOfGroup"></td>
+              </tr>
+          </table>
+      </form>
+
   </body>
 </html>

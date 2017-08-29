@@ -64,13 +64,13 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public void showContactByName(User user) throws Exception {
-        contactDAO.showContactByName(user);
+    public User showContactByName(User user) throws Exception {
+        return contactDAO.showContactByName(user);
     }
 
     @Override
-    public void showContactsOfGroup(String groupName) throws Exception {
-        contactDAO.showContactsOfGroup(groupName);
+    public List<User> showContactsOfGroup(String groupName) throws Exception {
+        return contactDAO.showContactsOfGroup(groupName);
     }
 
     @Override

@@ -137,31 +137,29 @@ public class ContactDAO extends Observable implements DAO<User> {
     }
 
     @Override
-    public void showContactByName(User user) throws Exception {
+    public User showContactByName(User user) throws Exception {
         PreparedStatement preparedStatement;
         preparedStatement = connection.prepareStatement(SHOW_CONTACT_BY_NAME);
         preparedStatement.setString(1, user.getFname());
         preparedStatement.setInt(2, userID);
 
         ResultSet result = preparedStatement.executeQuery();
+        User mapUser = mapper.mapToUser(result);
 
-        //UsersList users = mapper.mapToUsers(result);
-        setChanged();
-        //notifyObservers(users.toString());
+        return mapUser;
     }
 
     @Override
-    public void showContactsOfGroup(String groupName) throws Exception {
+    public List<User> showContactsOfGroup(String groupName) throws Exception {
         PreparedStatement preparedStatement;
         preparedStatement = connection.prepareStatement(SHOW_CONTACTS_OF_GROUP);
         preparedStatement.setString(1, groupName);
         preparedStatement.setInt(2, userID);
 
         ResultSet result = preparedStatement.executeQuery();
+        List<User> list = mapper.mapToUsers(result);
 
-        //UsersList users = mapper.mapToUsers(result);
-        setChanged();
-        //notifyObservers(users.toString());
+        return list;
     }
 
     @Override

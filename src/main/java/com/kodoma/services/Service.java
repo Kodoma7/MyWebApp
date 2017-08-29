@@ -21,8 +21,8 @@ public interface Service<T> {
     void removeContact(T obj) throws Exception;
     User showContactByID(T obj) throws Exception;
     List<T> showAllContacts() throws Exception;
-    void showContactByName(T obj) throws Exception;
-    void showContactsOfGroup(String groupName) throws Exception;
+    User showContactByName(T obj) throws Exception;
+    List<User> showContactsOfGroup(String groupName) throws Exception;
     List<String> showAllGroupsNames() throws Exception;
     void deleteLabel(User user) throws Exception;
     void editGroup(String name, String newName) throws SQLException;

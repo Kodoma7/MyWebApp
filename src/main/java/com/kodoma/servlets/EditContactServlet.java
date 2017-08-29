@@ -28,16 +28,18 @@ public class EditContactServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "ShowContactByID": {
-                    User resultUser = service.showContactByID(user);
-                    request.setAttribute("contact", resultUser);
-                    request.getRequestDispatcher("/showContactByID.jsp").forward(request, response);
+                case "Edit": {
+                    request.setAttribute("ID", id);
+                    request.getRequestDispatcher("/dataInput.jsp").forward(request, response);
+
+                    //service.editContact(user);
                 }
                 case "ShowAllGroupsNames": {
                     List<String> groupNames = service.showAllGroupsNames();
                     System.out.println(groupNames);
                     request.setAttribute("groupNames", groupNames);
                     request.getRequestDispatcher("/showAllGroupNames.jsp").forward(request, response);
+                    break;
                 }
             }
         } catch (Exception e) {

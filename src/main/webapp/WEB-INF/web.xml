@@ -23,6 +23,10 @@
         <servlet-name>EditContactServlet</servlet-name>
         <servlet-class>com.kodoma.servlets.EditContactServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowInformationServlet</servlet-name>
+        <servlet-class>com.kodoma.servlets.ShowInformationServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>EditContactServlet</servlet-name>
         <url-pattern>/editContact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowInformationServlet</servlet-name>
+        <url-pattern>/showInformation</url-pattern>
     </servlet-mapping>
 
 </web-app>
