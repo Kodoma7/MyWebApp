@@ -37,13 +37,11 @@
               </tr>
           </c:forEach>
       </table>
-      <table>
-          <tr>
-              <td><input type="submit" value="Add" name="Add"/></td>
-              <td><input type="submit" value="Edit" name="Edit"/></td>
-              <td><input type="submit" value="Delete" name="Delete"/></td>
-          </tr>
-      </table>
+      </form>
+
+      <form action="/addContact" method="post">
+          <input type="submit" value="Add"
+                 name="Add" id="frm1_submit" />
       </form>
 
       <form method="post" action="/showInformation">

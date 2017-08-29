@@ -87,7 +87,7 @@ public class ContactDAO extends Observable implements DAO<User> {
         preparedStatement.setString(4, user.getAddress());
         preparedStatement.setInt(5, user.getPhoneNumber());
         preparedStatement.setString(6, null); //group_id
-        preparedStatement.setString(7, null); //user_id
+        preparedStatement.setInt(7, userID); //user_id
 
         preparedStatement.executeQuery();
     }

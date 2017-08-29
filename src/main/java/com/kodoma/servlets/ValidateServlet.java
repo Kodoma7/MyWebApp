@@ -1,8 +1,9 @@
 package com.kodoma.servlets;
 
-import com.kodoma.dao.ContactDAO;
 import com.kodoma.datasource.User;
 import com.kodoma.exceptions.WrongUserNameOrPassword;
+import com.kodoma.services.Service;
+import com.kodoma.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,20 +16,20 @@ import java.util.List;
 
 
 public class ValidateServlet extends HttpServlet {
+    private Service service = UserService.getInstance();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=utf-8");
 
         String name = request.getParameter("firstName");
         String password = request.getParameter("password");
 
-        ContactDAO dao = ContactDAO.getInstance();
-        int userID;
         PrintWriter pw = response.getWriter();
 
         try {
-            userID = dao.validate(name, password);
-            List<User> list = dao.showAllContacts();
+            service.validate(name, password);
+            List<User> list = service.showAllContacts();
             request.setAttribute("listContacts", list);
             request.getRequestDispatcher("/main.jsp").forward(request, response);
 

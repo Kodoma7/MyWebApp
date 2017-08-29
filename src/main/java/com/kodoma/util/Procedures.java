@@ -2,8 +2,8 @@ package com.kodoma.util;
 
 public class Procedures {
     public static final String VALIDATE = "SELECT validate(?, ?)";
-    public static final String ADD_NEW_CONTACT = "SELECT addNewContact(?, ?, ?, ?, ?, ?)";
-    public static final String EDIT_CONTACT = "SELECT labelContact(?, ?, ?)";
+    public static final String ADD_NEW_CONTACT = "CALL addNewContact(?, ?, ?, ?, ?, ?)";
+    public static final String EDIT_CONTACT = "CALL editContact(?, ?, ?, ?, ?, ?, ?)";
     public static final String LABEL_CONTACT = "CALL labelContact(?, ?, ?)";
     public static final String REMOVE_CONTACT = "CALL removeContact(?, ?)";
     public static final String SHOW_CONTACT_BY_ID = "CALL showContactByID(?, ?)";
