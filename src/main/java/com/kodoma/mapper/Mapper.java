@@ -67,16 +67,4 @@ public class Mapper {
 
         return groups;
     }
-
-    public String mapToGroup(ResultSet resultSet) {
-        StringBuilder result = new StringBuilder();
-        try {
-            while (resultSet.next()) {
-                result.append(resultSet.getString("group_name") + "\n");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result.toString();
-    }
 }
