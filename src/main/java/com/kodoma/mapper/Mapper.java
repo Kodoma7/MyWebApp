@@ -64,7 +64,6 @@ public class Mapper {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return groups;
     }
 }
